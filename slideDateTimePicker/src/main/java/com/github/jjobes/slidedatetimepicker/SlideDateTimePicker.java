@@ -28,6 +28,9 @@ public class SlideDateTimePicker
     private Date mMaxDate;
     private boolean mIsClientSpecified24HourTime;
     private boolean mIs24HourTime;
+
+
+    private boolean mShowTimeOnly;
     private int mTheme;
     private int mIndicatorColor;
 
@@ -131,6 +134,22 @@ public class SlideDateTimePicker
         mIs24HourTime = is24HourTime;
     }
 
+    public boolean isShowTimeOnly() {
+        return mShowTimeOnly;
+    }
+    /**
+     * <p>Sets whether the TimePicker displays only time picker.</p>
+     * <p>Must be called before {@link #show()}.</p>
+     *
+     * @param showTimeOnly  <tt>true</tt> to force 24-hour time format,
+     *                      <tt>false</tt> to force 12-hour (AM/PM) time
+     *                      format.
+     */
+    public void setShowTimeOnly(boolean showTimeOnly) {
+        this.mShowTimeOnly = showTimeOnly;
+    }
+
+
     /**
      * Sets the theme of the dialog. If no theme is specified, it
      * defaults to holo light.
@@ -178,6 +197,7 @@ public class SlideDateTimePicker
                         mMaxDate,
                         mIsClientSpecified24HourTime,
                         mIs24HourTime,
+                        mShowTimeOnly,
                         mTheme,
                         mIndicatorColor);
 
@@ -201,6 +221,10 @@ public class SlideDateTimePicker
         private Date maxDate;
         private boolean isClientSpecified24HourTime;
         private boolean is24HourTime;
+
+
+
+        private boolean mShowTimeOnly;
         private int theme;
         private int indicatorColor;
 
@@ -255,6 +279,15 @@ public class SlideDateTimePicker
             return this;
         }
 
+        public boolean isShowTimeOnly() {
+            return mShowTimeOnly;
+        }
+
+        public Builder setShowTimeOnly(boolean showTimeOnly) {
+            this.mShowTimeOnly = showTimeOnly;
+            return this;
+        }
+
         /**
          * @see SlideDateTimePicker#setTheme(int)
          */
@@ -292,7 +325,7 @@ public class SlideDateTimePicker
             picker.setIs24HourTime(is24HourTime);
             picker.setTheme(theme);
             picker.setIndicatorColor(indicatorColor);
-
+            picker.setShowTimeOnly(mShowTimeOnly);
             return picker;
         }
     }
